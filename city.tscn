@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://qvdcstl8lin8"]
+
+[ext_resource type="PackedScene" uid="uid://la6fflp8lnk3" path="res://zone.tscn" id="1_x071s"]
+
+[node name="City" type="Node2D"]
+
+[node name="Zone1" parent="." instance=ExtResource("1_x071s")]
+position = Vector2(-358, -339)
+generation = 1000.0
+attraction = 600.0
+color = Color(0.396078, 0.823529, 0.396078, 1)
+
+[node name="Zone2" parent="." instance=ExtResource("1_x071s")]
+position = Vector2(276, -357)
+generation = 200.0
+attraction = 300.0
+color = Color(0.823529, 0.301961, 0.560784, 1)
+
+[node name="Zone3" parent="." instance=ExtResource("1_x071s")]
+position = Vector2(-333, 86)
+generation = 500.0
+color = Color(0.823529, 0.772549, 0.32549, 1)
+
+[node name="Zone" parent="." instance=ExtResource("1_x071s")]
+position = Vector2(296, 62)
+generation = 100.0
+attraction = 400.0
+color = Color(0.168627, 0.811765, 0.823529, 1)

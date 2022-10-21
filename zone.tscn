@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://la6fflp8lnk3"]
+
+[ext_resource type="Script" path="res://Zone.gd" id="1_iadvs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ehh6j"]
+font_size = 20
+font_color = Color(0.92549, 0.137255, 0.0156863, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kvqjj"]
+font_size = 20
+font_color = Color(0, 0.294118, 0.92549, 1)
+
+[node name="Zone" type="Node2D"]
+script = ExtResource("1_iadvs")
+generation = 800.0
+attraction = 500.0
+color = Color(0.415686, 0.47451, 0.823529, 1)
+
+[node name="Boundary" type="Polygon2D" parent="."]
+color = Color(0.415686, 0.47451, 0.823529, 1)
+polygon = PackedVector2Array(-27, -161, 209, -93, 134, 169, -266, 179, -240, -89)
+
+[node name="LabelAttraction" type="Label" parent="."]
+offset_left = 11.0
+offset_top = 14.0
+offset_right = 112.0
+offset_bottom = 45.0
+text = "500"
+label_settings = SubResource("LabelSettings_ehh6j")
+
+[node name="LabelGeneration" type="Label" parent="."]
+offset_left = 6.0
+offset_top = -48.0
+offset_right = 107.0
+offset_bottom = -17.0
+text = "800"
+label_settings = SubResource("LabelSettings_kvqjj")
