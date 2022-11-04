@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://brjjw4632k60a"]
+
+[ext_resource type="PackedScene" uid="uid://cu2k3tnqtpx4h" path="res://hero.tscn" id="1_kdrmc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7m7f"]
+size = Vector2(182, 567)
+
+[node name="Map" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(676, 305)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-3, 7)
+shape = SubResource("RectangleShape2D_w7m7f")
+
+[node name="Polygon2D" type="Polygon2D" parent="Area2D"]
+color = Color(1, 0.690196, 0.270588, 0.439216)
+polygon = PackedVector2Array(-96, -273, 85, -273, 90, 289, -89, 286)
+
+[node name="Hero" parent="." instance=ExtResource("1_kdrmc")]
+position = Vector2(345, 372)
+linear_speed = 500.0
+
+[connection signal="body_entered" from="Area2D" to="Hero" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="Hero" method="_on_area_2d_body_exited"]

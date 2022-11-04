@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://la6fflp8lnk3"]
+
+[ext_resource type="Script" path="res://Scenes/Zone.gd" id="1_ebwvw"]
+[ext_resource type="Script" path="res://Scripts/landuse.gd" id="2_tiynp"]
+
+[sub_resource type="Resource" id="Resource_lccbi"]
+script = ExtResource("2_tiynp")
+name = "resident"
+generation_ratio = 2.0
+attraction_ratio = 2.0
+color = Color(0.517647, 0.603922, 0.796078, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ehh6j"]
+font_size = 20
+font_color = Color(0.92549, 0.137255, 0.0156863, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kvqjj"]
+font_size = 20
+font_color = Color(0, 0.294118, 0.92549, 1)
+
+[node name="Zone" type="Node2D"]
+script = ExtResource("1_ebwvw")
+generation = 200.0
+attraction = 0.0
+color = Color(0.701961, 0.329412, 0.45098, 1)
+population = 0.0
+jobs = 0.0
+landuse = SubResource("Resource_lccbi")
+metadata/_edit_group_ = true
+
+[node name="Boundary" type="Polygon2D" parent="."]
+color = Color(0.701961, 0.329412, 0.45098, 1)
+polygon = PackedVector2Array(-27, -161, 209, -93, 134, 169, -266, 179, -240, -89)
+
+[node name="LabelAttraction" type="Label" parent="."]
+offset_left = 11.0
+offset_top = 14.0
+offset_right = 112.0
+offset_bottom = 45.0
+text = "500"
+label_settings = SubResource("LabelSettings_ehh6j")
+
+[node name="LabelGeneration" type="Label" parent="."]
+offset_left = 6.0
+offset_top = -48.0
+offset_right = 107.0
+offset_bottom = -17.0
+text = "200"
+label_settings = SubResource("LabelSettings_kvqjj")

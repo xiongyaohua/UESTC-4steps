@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu2k3tnqtpx4h"]
+
+[ext_resource type="Texture2D" uid="uid://cyi8t31l12bjk" path="res://icon.svg" id="1_f1slg"]
+
+[sub_resource type="GDScript" id="GDScript_i01i0"]
+script/source = "extends Node2D
+
+var speed := Vector2(0, 0)
+@export var linear_speed: float = 50
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	position += speed * delta
+
+func _unhandled_input(event):
+	var direction := Vector2(0, 0)
+	if event is InputEventKey:
+		if event.pressed:
+			if event.keycode == KEY_UP:
+				direction.y -= 1
+			if event.keycode == KEY_DOWN:
+				direction.y += 1
+			if event.keycode == KEY_LEFT:
+				direction.x -= 1
+			if event.keycode == KEY_RIGHT:
+				direction.x += 1
+				
+		speed = direction * linear_speed
+
+
+func _on_area_2d_body_entered(body):
+	$AnimationPlayer.play(\"shining\")
+
+
+func _on_area_2d_body_exited(body):
+	$AnimationPlayer.stop()
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_27j8j"]
+radius = 71.0
+height = 152.0
+
+[sub_resource type="Animation" id="Animation_i28q7"]
+resource_name = "shining"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.960784, 0.87451, 1), Color(0.376471, 0.792157, 0.0196078, 0.388235)]
+}
+
+[sub_resource type="Animation" id="Animation_iy55h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.960784, 0.87451, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kgu8u"]
+_data = {
+"RESET": SubResource("Animation_iy55h"),
+"shining": SubResource("Animation_i28q7")
+}
+
+[node name="Hero" type="Node2D"]
+script = SubResource("GDScript_i01i0")
+metadata/_edit_group_ = true
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(1, 0.960784, 0.87451, 1)
+position = Vector2(1, -67)
+texture = ExtResource("1_f1slg")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(1, -77)
+shape = SubResource("CapsuleShape2D_27j8j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kgu8u")
+}

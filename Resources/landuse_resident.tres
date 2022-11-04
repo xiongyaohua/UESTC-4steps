@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b6dodfjjj71bn"]
+
+[ext_resource type="Script" path="res://Scripts/landuse.gd" id="1_eb50p"]
+
+[resource]
+script = ExtResource("1_eb50p")
+name = "resident"
+generation_ratio = 2.0
+attraction_ratio = 2.0
+color = Color(0.486275, 0.513726, 0.690196, 1)

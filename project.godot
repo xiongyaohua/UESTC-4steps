@@ -8,8 +8,19 @@
 
 config_version=5
 
+_global_script_classes=[{
+"base": "Resource",
+"class": &"LandUse",
+"language": &"GDScript",
+"path": "res://Scripts/landuse.gd"
+}]
+_global_script_class_icons={
+"LandUse": ""
+}
+
 [application]
 
 config/name="Uestc-4 Steps"
-config/features=PackedStringArray("4.0", "Double Precision", "Forward Plus")
+run/main_scene="res://map.tscn"
+config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
